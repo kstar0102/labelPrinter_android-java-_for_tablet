@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--　共通　-->
+    <string name="app_name">チケット発券Ver2.0</string>
+    <string name="OK">OK</string>
+    <string name="Cancel">キャンセル</string>
+    <string name="YES">はい</string>
+    <string name="NO">いいえ</string>
+    <string name="Delete">削除</string>
+    <string name="Save">保存</string>
+    <string name="Back">戻り</string>
+    <string name="Edit">編集</string>
+    <string name="Send">送信</string>
+    <string name="Select">選択</string>
+    <string name="Confirm">決\n定</string>
+
+    <string name="holiday">休日</string>
+    <string name="workday">平日</string>
+    <string name="mmc">MMC</string>
+    <string name="kmc">KMC</string>
+    <string name="lb_printing">プリント中...</string>
+    <string name="btn_select_xml">XMLの選択</string>
+    <string name="device_err_title">端末名エラー</string>
+    <string name="device_err_msg">端末名を設定する必要があります。</string>
+
+    <!--Font-->
+    <string name="FontM">Noto Sans CJK JP Medium</string>
+    <string name="FontB">Noto Sans CJK JP Bold</string>
+
+    <string name="Today">今日</string>
+    <string name="Monday">月</string>
+    <string name="TuesDay">火</string>
+    <string name="WendsDay">水</string>
+    <string name="ThursDay">木</string>
+    <string name="FriDay">金</string>
+    <string name="Saturday">土</string>
+    <string name="Sunday">日</string>
+    <string name="Continue">・・・</string>
+
+    <!--　ログイン画面　-->
+    <string name="database_connect_loading">データベースへの接続中・・・</string>
+    <string name="main_loading">リクエスト中です・・・</string>
+    <string name="loginging">ログイン中・・・</string>
+    <string name="user_id">ユーザーID</string>
+    <string name="password">パスワード</string>
+    <string name="login">ログイン</string>
+    <string name="input_err_title">入力エラー</string>
+    <string name="input_err_msg">ユーザーIDもしくはパスワードを入力してください。</string>
+    <string name="login_err_title">ログイン失敗</string>
+    <string name="login_err_msg">ログインが失敗しました。</string>
+    <string name="server_connect_error_msg">データベースサーバーに接続できませんでした。スタンドアロンモードで起動しますか？</string>
+    <string name="login_err_msg1">データベース接続が失敗したため、ログインできません。\nネットワークの状態を確認してください。</string>
+    <string name="login_err_msg2">XMLファイルが存在しないため、ログインできません。\n本アプリを終了し、XMLファイルを追加した後、再度起動してください。</string>
+    <string name="login_err_msg3">本アプリは起動できません。\n本アプリを終了し、XMLファイルを追加した後、再度起動してください。</string>
+    <string name="select_xml_title">XMLファイルを選択してください。</string>
+    <string name="no_xml_title">エラー</string>
+    <string name="no_xml_msg">XMLファイルが存在しません。</string>
+
+
+    <!--　発券画面　-->
+    <string name="btn_system">システム</string>
+    <string name="btn_report">〆処理</string>
+    <string name="btn_clear">クリア</string>
+    <string name="btn_refund">払戻</string>
+    <string name="btn_reticketing">再発券</string>
+    <string name="btn_consign">委託</string>
+    <string name="btn_receivable">売掛</string>
+    <string name="btn_cash">発券</string>
+    <string name="lb_sum">合計金額</string>
+    <string name="lb_num">枚</string>
+    <string name="btn_presale">先行発券</string>
+
+    <!--　支払画面　-->
+    <string name="order_list">ご注文リスト</string>
+    <string name="ticketing_money">購入金額</string>
+    <string name="refund_money">払戻し金額</string>
+    <string name="pre_money">預り金</string>
+    <string name="remain_money">おつり</string>
+    <string name="btn_pay">会計する</string>
+    <string name="lb_only">但し</string>
+    <string name="btn_receipt_pay">会計 + 領収書発行</string>
+    <string name="lb_yen">円</string>
+    <string name="price_err_msg">預り金が十分ではありません。</string>
+    <string name="lb_yen2">¥</string>
+    <string name="price_name_err_msg">預り金もしくは但し項目を入力してください。</string>
+    <string name="printing_err_title">印刷エラー</string>
+    <string name="printing_err_msg">印刷中にエラーが発生しました。</string>
+    <string name="select_print_msg">スケジュールされた資料が存在しません。</string>
+    <string name="printer_connect_err_title">接続エラー</string>
+    <string name="printer_connect_err_msg">接続が失敗しました。</string>
+
+    <!--　日次締め画面　-->
+    <string name="select_table">出力データ</string>
+    <string name="lb_end_day">対象締日</string>
+    <string name="btn_end_cancel">締解除</string>
+    <string name="btn_day_sum_print">日計表印刷</string>
+    <string name="btn_sum_print">集計表印刷</string>
+    <string name="btn_day_sum_send">締データ転送</string>
+    <string name="btn_day_sum_cancel">締データ取消転送</string>
+    <string name="btn_by_end_day">日次締</string>
+    <string name="lb_completed">済み</string>
+    <string name="lb_code">コード </string>
+    <string name="lb_type"> 巻種別</string>
+    <string name="lb_unit">単価</string>
+    <string name="lb_sell">発行</string>
+    <string name="lb_refund">発行</string>
+    <string name="lb_total">合計</string>
+    <string name="lb_price">金額</string>
+    <string name="btn_print">印刷</string>
+    <string name="close_btn">閉じる</string>
+    <string name="lb_settlement_title">[日計表]</string>
+    <string name="lb_settable_title">集計表</string>
+
+    <!--　設定　-->
+    <string name="lb_server_ip">接続先のデータベース</string>
+    <string name="lb_last_sync">最終サーバー同期時刻</string>
+    <string name="btn_user_info">ユーザー情報</string>
+    <string name="btn_start_mode">起動モード</string>
+    <string name="csv_export_btn">データ出力</string>
+    <string name="btn_device_setting">端末設定</string>
+    <string name="lb_device_name">端末名</string>
+    <string name="lb_device_num">端末No</string>
+    <string name="lb_device_place">販売場所</string>
+    <string name="btn_type_setting">区分設定</string>
+    <string name="btn_receipt">領収書発行</string>
+    <string name="btn_ticket_setting">チケット種別表示設定</string>
+    <string name="btn_to_ticket">発券画面</string>
+    <string name="lb_start_mode">スタンドアロンモードとして起動する</string>
+    <string name="lb_start_mode_desc">スタンドアロンモードとして起動するには、上記のチェックをお送りいたします。入れ、パラメータファイルを対象のファイルに差し替えます。\nスタンドアロンの場合、起動時にサーバーのデータを参照しません。\nその状態で、本アプリを終了し、再度起動します。\n\n通常モードで起動するには、上記のチェックを外します。\nその状態で、本アプリを終了し、再度起動します。</string>
+    <string name="btn_registry">登録</string>
+    <string name="lb_receipt_money">領収金額</string>
+    <string name="table_show_btn">再表示</string>
+    <string name="table_date_select">集計範囲</string>
+    <string name="csv_date_select">抽出基準日</string>
+    <string name="lb_preticket_day">チケット日付</string>
+    <string name="btn_receipt_only">領収書発行</string>
+    <string name="btn_preticket">発券する</string>
+    <string name="btn_csv_export">データ出力</string>
+    <string name="receipt_name_err_msg">領収金額を入力してください。</string>
+    <string name="build_date">ファイルバージョン:2.0 </string>
+    <string name="spinner_title">出力データ</string>
+
+    <string-array name="days_array">
+        <item>月</item>
+        <item>火</item>
+        <item>水</item>
+        <item>木</item>
+        <item>金</item>
+        <item>土</item>
+        <item>日</item>
+    </string-array>
+
+    <!--支払のリスト-->
+    <string-array name="TicketingType">
+        <item>払戻</item>
+        <item>再発券</item>
+        <item>委託</item>
+        <item>売掛</item>
+        <item>現金</item>
+    </string-array>
+
+    <!--販売場所のリスト-->
+    <string-array name="device_place">
+        <item>センターハウス事務所</item>
+        <item>センターハウス2F発券場所1</item>
+        <item>センターハウス2F発券場所2</item>
+        <item>チケット販売所1</item>
+        <item>チケット販売所2</item>
+        <item>レンタルスキーハウス</item>
+    </string-array>
+
+
+
+
+
+
+
+
+
+</resources>

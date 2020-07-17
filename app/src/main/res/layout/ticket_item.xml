@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <TextView
+        android:id="@+id/ticketName"
+        android:layout_width="160dp"
+        android:textSize="@dimen/screen_label_text_font"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:gravity="center|left"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/separater1"
+        android:background="@color/SEPARATER_BCOLOR"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/ticketName" />
+
+    <TextView
+        android:id="@+id/ticketNum"
+        android:layout_toRightOf="@+id/separater1"
+        android:layout_toLeftOf="@+id/separater2"
+        android:layout_width="match_parent"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:textSize="@dimen/screen_label_text_font"
+        android:gravity="center"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/separater2"
+        android:background="@color/SEPARATER_BCOLOR"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@+id/ticketPrice"/>
+
+    <TextView
+        android:id="@+id/ticketPrice"
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/screen_label_text_font"
+        android:gravity="center|right"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:text=""
+        android:background="@color/SEPARATER_BCOLOR"
+        android:layout_alignParentBottom="true"/>
+
+
+</RelativeLayout>

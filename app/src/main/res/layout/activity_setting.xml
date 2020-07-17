@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".Activities.SettingActivity">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <LinearLayout
+            android:id="@+id/serverIPLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="300dp"
+            android:layout_marginRight="300dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_alignParentTop="true">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:textColor="@color/black"
+                android:text="@string/lb_server_ip"
+                android:textSize="@dimen/screen_label_text_font" />
+
+            <TextView
+                android:id="@+id/serverIPTxt"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:textColor="@color/black"
+                android:text="192.168.200.88"
+                android:textSize="@dimen/screen_label_text_font" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lastSyncLayout"
+            android:layout_below="@+id/serverIPLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="300dp"
+            android:layout_marginRight="300dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:textColor="@color/black"
+                android:text="@string/lb_last_sync"
+                android:textSize="@dimen/screen_label_text_font" />
+
+            <TextView
+                android:id="@+id/lastSyncTxt"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:textColor="@color/black"
+                android:textSize="@dimen/screen_label_text_font" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnLayout1"
+            android:layout_below="@+id/lastSyncLayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginRight="200dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <Button
+                android:id="@+id/deviceSettingBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/normal_button"
+                android:textColor="@color/black"
+                android:text="@string/btn_device_setting"
+                android:layout_marginRight="50dp"
+                android:textSize="@dimen/screen_btn_text_font" />
+
+            <Button
+                android:id="@+id/startModeBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/normal_button"
+                android:textColor="@color/black"
+                android:text="@string/btn_start_mode"
+                android:layout_marginRight="50dp"
+                android:textSize="@dimen/screen_btn_text_font" />
+
+            <Button
+                android:id="@+id/exportBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/normal_button"
+                android:textColor="@color/black"
+                android:text="@string/csv_export_btn"
+                android:textSize="@dimen/screen_btn_text_font" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnLayout2"
+            android:layout_below="@+id/btnLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginRight="200dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <Button
+                android:id="@+id/receiptBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/normal_button"
+                android:textColor="@color/black"
+                android:text="@string/btn_receipt"
+                android:layout_marginRight="50dp"
+                android:textSize="@dimen/screen_btn_text_font" />
+
+            <Button
+                android:id="@+id/ticketTypeBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/normal_button"
+                android:textColor="@color/black"
+                android:text="@string/btn_ticket_setting"
+                android:layout_marginRight="50dp"
+                android:textSize="@dimen/screen_btn_text_font" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:alpha=".0"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnLayout4"
+            android:layout_below="@+id/btnLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginRight="200dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/normal_button"
+                android:textColor="@color/black"
+                android:text="@string/btn_receipt"
+                android:layout_marginRight="50dp"
+                android:visibility="invisible"
+                android:textSize="@dimen/screen_btn_text_font" />
+
+            <Button
+                android:id="@+id/backBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/normal_button"
+                android:textColor="@color/black"
+                android:text="@string/btn_to_ticket"
+                android:layout_marginRight="50dp"
+                android:textSize="@dimen/screen_btn_text_font" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:alpha=".0"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/loadingLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/half_transfer">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/border_loading"
+                android:padding="20dp">
+
+                <ProgressBar
+                    android:id="@+id/loading_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:indeterminateTint="@color/black"
+                    android:indeterminateTintMode="src_atop" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/loading_spinner"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/lb_printing"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/versionTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/build_date"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:gravity="center|right"
+        android:layout_above="@+id/statusLayout"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20dp"/>
+
+    <LinearLayout
+        android:id="@+id/statusLayout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/separater1"
+            android:background="@color/SEPARATER_BCOLOR"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <TextView
+            android:id="@+id/userInfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|right"
+            android:paddingRight="16dp"
+            android:lines="1"
+            android:textSize="@dimen/status_text_font" />
+
+    </LinearLayout>
+
+</RelativeLayout>

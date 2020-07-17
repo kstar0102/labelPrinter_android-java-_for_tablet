@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="500dp"
+    android:layout_height="300dp"
+    android:background="@drawable/border_main">
+
+    <RelativeLayout
+        android:layout_width="450dp"
+        android:layout_height="450dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <LinearLayout
+            android:id="@+id/predateLayout"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="@dimen/screen_label_text_font"
+                android:text="@string/lb_preticket_day"
+                android:gravity="left|bottom"
+                android:textColor="@color/black"/>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@android:color/transparent"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
+                </LinearLayout>
+
+
+                <DatePicker
+                    android:id="@+id/datePicker1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:datePickerMode="spinner"/>
+
+                <EditText
+                    android:id="@+id/preDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="0dp"
+                    android:gravity="center|right"
+                    android:paddingLeft="10dp"
+                    android:lines="1"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+                    android:inputType="number"
+                    android:background="@drawable/border_white"
+                    android:imeOptions="actionSend"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+        <Button
+            android:id="@+id/btn_preticket"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/predateLayout"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/normal_button"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:text="@string/btn_preticket"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/statusLayout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/separater1"
+            android:background="@color/SEPARATER_BCOLOR"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <TextView
+            android:id="@+id/userInfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|right"
+            android:paddingRight="16dp"
+            android:lines="1"
+            android:textSize="@dimen/status_text_font" />
+
+    </LinearLayout>
+
+</RelativeLayout>

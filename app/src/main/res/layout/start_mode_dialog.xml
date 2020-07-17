@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="1000dp"
+    android:layout_height="500dp"
+    android:background="@drawable/border_main">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="100dp">
+
+        <CheckBox
+            android:id="@+id/startModeCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lb_start_mode"
+            android:textSize="@dimen/screen_label_text_font"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/lb_start_mode_desc"
+            android:textSize="@dimen/screen_label_text_font"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/registryBtn"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="98dp"
+        android:layout_marginBottom="52dp"
+        android:background="@drawable/normal_button"
+        android:gravity="center"
+        android:text="@string/btn_registry"
+        android:textSize="@dimen/screen_btn_text_font" />
+
+    <LinearLayout
+        android:id="@+id/statusLayout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/separater1"
+            android:background="@color/SEPARATER_BCOLOR"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <TextView
+            android:id="@+id/userInfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|right"
+            android:paddingRight="16dp"
+            android:lines="1"
+            android:textSize="@dimen/status_text_font" />
+
+    </LinearLayout>
+
+</RelativeLayout>

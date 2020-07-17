@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="400dp"
+    android:layout_height="400dp"
+    android:background="@drawable/border_main">
+
+    <RelativeLayout
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/ticketNumber"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border_white"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="@dimen/input_number_font"
+            android:gravity="center|right"
+            android:textStyle="bold"
+            android:lines="1"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:imeOptions="actionDone"
+            android:inputType="number|textNoSuggestions"
+            android:layout_alignParentTop="true"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ticketNumber"
+            android:layout_above="@+id/key0"
+            android:layout_toLeftOf="@+id/btnClear"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="3"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/key7"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/input_number_font"
+                        android:text="7"
+                        android:gravity="center"
+                        android:background="@drawable/normal_button"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/key8"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/input_number_font"
+                        android:text="8"
+                        android:gravity="center"
+                        android:background="@drawable/normal_button"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/key9"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/input_number_font"
+                        android:text="9"
+                        android:gravity="center"
+                        android:background="@drawable/normal_button"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="3"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/key4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/input_number_font"
+                        android:text="4"
+                        android:gravity="center"
+                        android:background="@drawable/normal_button"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/key5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/input_number_font"
+                        android:text="5"
+                        android:gravity="center"
+                        android:background="@drawable/normal_button"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/key6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/input_number_font"
+                        android:text="6"
+                        android:gravity="center"
+                        android:background="@drawable/normal_button"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="3"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/key1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/input_number_font"
+                        android:text="1"
+                        android:gravity="center"
+                        android:background="@drawable/normal_button"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/key2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/input_number_font"
+                        android:text="2"
+                        android:gravity="center"
+                        android:background="@drawable/normal_button"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/key3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/input_number_font"
+                        android:text="3"
+                        android:gravity="center"
+                        android:background="@drawable/normal_button"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/key0"
+            android:layout_width="75dp"
+            android:layout_height="55dp"
+            android:textSize="@dimen/input_number_font"
+            android:text="0"
+            android:gravity="center"
+            android:background="@drawable/normal_button"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"/>
+
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:textSize="@dimen/screen_btn_text_font"
+            android:text="@string/btn_clear"
+            android:gravity="center"
+            android:background="@drawable/normal_button"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ticketNumber"
+            android:layout_marginTop="20dp"/>
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:textSize="@dimen/screen_btn_text_font"
+            android:text="@string/Delete"
+            android:gravity="center"
+            android:background="@drawable/normal_button"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/btnClear"
+            android:layout_marginTop="20dp"/>
+
+        <Button
+            android:id="@+id/btnConfirm"
+            android:layout_width="80dp"
+            android:layout_height="130dp"
+            android:textSize="@dimen/input_number_font"
+            android:text="@string/Confirm"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:background="@drawable/normal_button"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/btnDelete"
+            android:layout_marginTop="20dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

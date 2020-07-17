@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="60dp"
+    android:layout_marginLeft="-1dp"
+    android:id="@+id/tabItemView"
+    android:background="@drawable/border_white">
+
+    <TextView
+        android:id="@+id/tabTitleTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/screen_label_text_font"
+        android:text="@string/workday"
+        android:textColor="@color/black"
+        android:layout_margin="15dp"
+        android:gravity="center"/>
+</LinearLayout>

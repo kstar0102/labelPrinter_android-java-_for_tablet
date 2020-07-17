@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="@dimen/dialog_screen_width"
+    android:layout_height="500dp"
+
+    android:background="@drawable/border_main">
+
+    <LinearLayout
+        android:id="@+id/maindialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/dateLayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginLeft="50dp"
+                android:text="@string/lb_end_day"
+                android:textColor="@color/black"
+                android:textSize="@dimen/screen_label_text_font" />
+
+            <TextView
+                android:id="@+id/dateTxt"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:background="@drawable/border_white"
+                android:layout_marginLeft="50dp"
+                android:textColor="@color/black"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:text=""
+                android:textSize="@dimen/screen_label_text_font" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/infoLayout"
+            android:layout_below="@+id/dateLayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/infoTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginLeft="50dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/screen_label_text_font" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/butLayout1"
+            android:layout_below="@+id/infoLayout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp">
+
+            <Button
+                android:id="@+id/endCancelBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="50dp"
+                android:textColor="@color/black"
+                android:background="@drawable/normal_button"
+                android:text="@string/btn_end_cancel"
+                android:textSize="@dimen/screen_btn_text_font" />
+
+            <Button
+                android:id="@+id/endByDayBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="50dp"
+                android:textColor="@color/black"
+                android:text="@string/btn_by_end_day"
+                android:background="@drawable/normal_button"
+                android:textSize="@dimen/screen_btn_text_font" />
+
+            <Button
+                android:id="@+id/daySumSendBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/black"
+                android:text="@string/btn_day_sum_send"
+                android:background="@drawable/normal_button"
+                android:textSize="@dimen/screen_btn_text_font" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/butLayout2"
+            android:layout_below="@+id/butLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp">
+
+            <Button
+                android:id="@+id/daySumPrintBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="50dp"
+                android:textColor="@color/black"
+                android:background="@drawable/normal_button"
+                android:text="@string/btn_day_sum_print"
+                android:textSize="@dimen/screen_btn_text_font" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="50dp"
+                android:visibility="invisible"
+                android:layout_marginLeft="50dp"
+                android:textColor="@color/black"
+                android:text="@string/btn_by_end_day"
+                android:background="@drawable/normal_button"
+                android:textSize="@dimen/screen_btn_text_font" />
+
+            <Button
+                android:id="@+id/daySumCancelBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/black"
+                android:text="@string/btn_day_sum_cancel"
+                android:background="@drawable/normal_button"
+                android:textSize="@dimen/screen_btn_text_font" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/butLayout3"
+            android:layout_below="@+id/butLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp">
+
+            <Button
+                android:id="@+id/SumPrintBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="50dp"
+                android:textColor="@color/black"
+                android:visibility="gone"
+                android:background="@drawable/normal_button"
+                android:text="@string/btn_sum_print"
+                android:textSize="@dimen/screen_btn_text_font" />
+
+
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="invisible"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/normal_button"
+                android:textColor="@color/black"
+                android:textSize="@dimen/screen_btn_text_font" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/statusLayout"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/separater1"
+                android:background="@color/SEPARATER_BCOLOR"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <TextView
+                android:id="@+id/userInfo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|right"
+                android:paddingRight="16dp"
+                android:lines="1"
+                android:textSize="@dimen/status_text_font" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/mainloadingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:elevation="10dp"
+        android:background="@color/half_transfer">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/border_loading"
+            android:padding="20dp">
+
+            <ProgressBar
+                android:id="@+id/loading_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/black"
+                android:indeterminateTintMode="src_atop" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/loading_main"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="@string/main_loading"
+                android:textColor="@color/black"
+                android:textSize="26dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

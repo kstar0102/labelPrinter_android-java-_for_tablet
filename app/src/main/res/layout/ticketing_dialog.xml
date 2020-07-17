@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="@dimen/dialog_screen_width"
+    android:layout_height="@dimen/dialog_screen_height"
+    android:background="@drawable/border_main">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/statusLayout"
+        android:id="@+id/mainlayout"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="7">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4">
+
+                <TextView
+                    android:id="@+id/listLb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/screen_label_text_font"
+                    android:text="@string/order_list"/>
+
+                <ScrollView
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/listLb"
+                    android:id="@+id/mainscroll"
+                    android:background="@drawable/border_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="850px">
+
+                    <LinearLayout
+                        android:id="@+id/ticketListLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20px"
+                    android:padding="1px"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/mainscroll">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/btn_presale"
+                        android:id="@+id/ticketPrebtn"
+                        android:layout_marginRight="500px"
+                        android:background="@drawable/normal_button"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_weight="4"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:layout_marginLeft="30dp">
+
+                <TextView
+                    android:id="@+id/cashLb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="32dp"
+                    android:text="@string/btn_cash"
+                    android:textColor="@color/black"/>
+
+                <Button
+                    android:id="@+id/ticketingCloseBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/normal_button"
+                    android:textSize="25dp"
+                    android:focusedByDefault="true"
+                    android:text="@string/btn_to_ticket"
+                    android:textStyle="bold"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"/>
+
+                <LinearLayout
+                    android:id="@+id/ticketingLayout"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/cashLb"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:id="@+id/ticketingMoneyLb"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/screen_label_text_font"
+                        android:text="@string/ticketing_money"
+                        android:gravity="left|center"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/ticketingMoney"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="right|bottom"
+                        android:textSize="40sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/preMoneyLayout"
+                    android:layout_marginTop="30dp"
+                    android:layout_below="@+id/ticketingLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/screen_label_text_font"
+                        android:text="@string/pre_money"
+                        android:gravity="left|center"
+                        android:textColor="@color/black"/>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:background="@android:color/transparent"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true">
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/preMoney"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="0dp"
+                            android:layout_toLeftOf="@+id/lbYen"
+                            android:background="@drawable/border_white"
+                            android:gravity="center|right"
+                            android:lines="1"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="40sp"
+                            android:textStyle="bold"
+                            android:importantForAutofill="no"
+                            android:inputType="number"/>
+
+                        <TextView
+                            android:id="@+id/lbYen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="right|center"
+                            android:textSize="@dimen/screen_label_text_font"
+                            android:text="@string/lb_yen"
+                            android:textColor="@color/black"
+                            android:layout_alignParentRight="true"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/remainMoneyLayout"
+                    android:layout_marginTop="30dp"
+                    android:layout_below="@+id/preMoneyLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/screen_label_text_font"
+                        android:text="@string/remain_money"
+                        android:gravity="left|center"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/remainMoney"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="right|center"
+                        android:textSize="40sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/refundLayout"
+                    android:layout_marginTop="30dp"
+                    android:layout_below="@+id/ticketingLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:orientation="vertical">
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp">
+
+                        <RadioButton
+                            android:id="@+id/cashRd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/btn_cash"
+                            android:textSize="20dp"
+                            android:visibility="invisible"
+                            android:checked="true"/>
+
+                        <RadioButton
+                            android:id="@+id/receivableRd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/btn_receivable"
+                            android:textSize="20dp"
+                            android:visibility="invisible"
+                            android:layout_marginTop="20dp"/>
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/ticketingBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/remainMoneyLayout"
+                    android:layout_marginTop="30dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/normal_button"
+                    android:textSize="30dp"
+                    android:focusedByDefault="true"
+                    android:text="@string/btn_pay"
+                    android:textStyle="bold"/>
+
+                <RelativeLayout
+                    android:id="@+id/receiptLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/ticketingBtn"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:id="@+id/lbOnly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="right|bottom"
+                        android:textSize="@dimen/screen_label_text_font"
+                        android:text="@string/lb_only"
+                        android:textColor="@color/black"
+                        android:layout_alignParentLeft="true"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@android:color/transparent"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true">
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/receiptTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_toRightOf="@+id/lbOnly"
+                        android:background="@drawable/border_white"
+                        android:gravity="center|right"
+                        android:layout_marginLeft="20dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:lines="1"
+                        android:importantForAutofill="no"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="35dp" />
+
+                </RelativeLayout>
+
+
+                <Button
+                    android:id="@+id/ticketingReceiptBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/receiptLayout"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/normal_button"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="30dp"
+                    android:text="@string/btn_receipt_pay"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/statusLayout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/separater1"
+            android:background="@color/SEPARATER_BCOLOR"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <TextView
+            android:id="@+id/userInfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|right"
+            android:paddingRight="16dp"
+            android:lines="1"
+            android:textSize="@dimen/status_text_font" />
+
+    </LinearLayout>
+
+</RelativeLayout>

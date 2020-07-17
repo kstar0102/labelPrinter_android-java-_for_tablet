@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="screen_label_text_font">24sp</dimen>
+    <dimen name="screen_btn_text_font">24sp</dimen>
+    <dimen name="ticket_btn_text_font">28sp</dimen>
+    <dimen name="screen_price_text_font">30sp</dimen>
+    <dimen name="input_number_font">32sp</dimen>
+    <dimen name="status_text_font">18sp</dimen>
+    <dimen name="header_text_font">24sp</dimen>
+
+    <dimen name="dialog_screen_width">1000dp</dimen>
+    <dimen name="dialog_screen_height">600dp</dimen>
+
+</resources>

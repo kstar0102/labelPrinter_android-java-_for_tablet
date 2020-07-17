@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="40dp">
+
+    <TextView
+        android:id="@+id/codeTxt"
+        android:layout_width="100dp"
+        android:textSize="@dimen/header_text_font"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:layout_marginRight="2px"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/separater1"
+        android:background="@color/SEPARATER_BCOLOR"
+        android:layout_width="1dp"
+        android:layout_marginRight="2px"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/codeTxt" />
+
+    <TextView
+        android:id="@+id/ticketTypeTxt"
+        android:layout_width="200dp"
+        android:textSize="@dimen/header_text_font"
+        android:layout_marginRight="2px"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/separater1"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/separater2"
+        android:background="@color/SEPARATER_BCOLOR"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/ticketTypeTxt" />
+
+    <TextView
+        android:id="@+id/unitTxt"
+        android:layout_width="150dp"
+        android:textSize="@dimen/header_text_font"
+        android:textColor="@color/black"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/separater2"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/separater3"
+        android:background="@color/SEPARATER_BCOLOR"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/unitTxt" />
+
+    <TextView
+        android:id="@+id/sellTxt"
+        android:layout_width="80dp"
+        android:textSize="@dimen/header_text_font"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/separater3"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/separater4"
+        android:background="@color/SEPARATER_BCOLOR"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/sellTxt" />
+
+    <TextView
+        android:id="@+id/refundTxt"
+        android:layout_width="80dp"
+        android:textSize="@dimen/header_text_font"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@+id/separater4"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/separater5"
+        android:background="@color/SEPARATER_BCOLOR"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/refundTxt" />
+
+    <TextView
+        android:id="@+id/totalTxt"
+        android:layout_width="100dp"
+        android:textSize="@dimen/header_text_font"
+        android:paddingRight="10dp"
+        android:textColor="@color/black"
+        android:paddingLeft="10dp"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/separater5"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/separater6"
+        android:background="@color/SEPARATER_BCOLOR"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/totalTxt" />
+
+    <TextView
+        android:id="@+id/priceTxt"
+        android:layout_width="wrap_content"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:textSize="@dimen/header_text_font"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@+id/separater6"
+        android:layout_alignParentRight="true"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:background="@color/SEPARATER_BCOLOR"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
