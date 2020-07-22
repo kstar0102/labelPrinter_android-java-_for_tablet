@@ -45,6 +45,7 @@ public class TicketingDlg extends Dialog {
     private LinearLayout preMoneyLayout, remainMoneyLayout, refundLayout;
     private RadioButton cashRd, receivableRd;
 
+
     public TicketingDlg(@NonNull Context context, final int type, ArrayList<TicketInfo> datas, final TicketingLinstener linstener) {
         super(context);
         setContentView(R.layout.ticketing_dialog);
@@ -120,6 +121,7 @@ public class TicketingDlg extends Dialog {
 
                 alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
+
                         if (linstener != null) {
                             if (paymentType == 0) {
                                 if (cashRd.isChecked()) {//現金払戻し
@@ -173,6 +175,7 @@ public class TicketingDlg extends Dialog {
             ticketingReceiptBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     if (paymentType == 0) {
                         if (cashRd.isChecked()) {//現金払戻し
                             linstener.OnRefundTicketingBtnClicked(1);

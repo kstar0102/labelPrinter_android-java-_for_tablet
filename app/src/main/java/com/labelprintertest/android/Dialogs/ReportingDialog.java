@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.labelprintertest.android.Activities.MainActivity;
 import com.labelprintertest.android.Activities.SumByDayActivity;
 import com.labelprintertest.android.Activities.SumByTableAvtivity;
 import com.labelprintertest.android.Common.Common;
@@ -87,14 +88,15 @@ public class ReportingDialog extends Dialog implements View.OnClickListener {
         userInfo.setText(cm.getUserInfo());
 
         infoTxt.setText(Common.endInfoStr);
-        if(SumByDayActivity.checkingpring == true){
+        if(MainActivity.checkingpring == true){
             infoTxt.setText("締めデータ転送済");
         }
         SimpleDateFormat formatter= new SimpleDateFormat("HH");
         Date date = new Date(System.currentTimeMillis());
         System.out.println(formatter.format(date));
         if(Integer.parseInt(formatter.format(date)) > 23){
-            SumByDayActivity.checkingpring = false;
+            MainActivity.checkingpring = false;
+            infoTxt.setText("");
         }
     }
 
