@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.opengl.Visibility;
 import android.os.Handler;
@@ -16,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 
 import com.labelprintertest.android.Activities.MainActivity;
 import com.labelprintertest.android.Activities.SumByDayActivity;
@@ -47,14 +49,12 @@ public class ReportingDialog extends Dialog implements View.OnClickListener {
     private boolean isDaySumSend = false;
     boolean ischeckdialog = false;
     private LinearLayout ReportLayout;
-    public RelativeLayout mainloading;
 
     public ReportingDialog(@NonNull Context context) {
         super(context);
         setContentView(R.layout.reporting_dialog);
         ReportLayout = findViewById(R.id.maindialog);
 
-        mainloading = findViewById(R.id.mainloadingLayout);
 
         if(ischeckdialog == true){
             dismiss();
@@ -153,35 +153,45 @@ public class ReportingDialog extends Dialog implements View.OnClickListener {
     }
 
     private boolean sendDayEndSumData (){
+
         boolean isDone = true;
-        mainloading.setVisibility(VISIBLE);
-        APIManager apiManager = new APIManager();
-        if (cm.hasInternetConnection() && apiManager.connectionclass() != null) {
-            APIManager manager = new APIManager();
-            isDone = manager.syncToServer(nowDate);
-            if (isDone) {
-                LocalStorageManager localStorageManager = new LocalStorageManager();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm", Locale.JAPANESE);
-                localStorageManager.saveLastSyncDate(sdf.format(Calendar.getInstance().getTime()));
+        try{
+            APIManager apiManager = new APIManager();
+            if (cm.hasInternetConnection() && apiManager.connectionclass() != null) {
+                APIManager manager = new APIManager();
+                isDone = manager.syncToServer(nowDate);
+                if (isDone) {
+                    LocalStorageManager localStorageManager = new LocalStorageManager();
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm", Locale.JAPANESE);
+                    localStorageManager.saveLastSyncDate(sdf.format(Calendar.getInstance().getTime()));
+                }
             }
-       }
-        else {
-            isDone = false;
+            else {
+                isDone = false;
+            }
+        }catch (Exception e){
+            AlertDialog alertDialog = new AlertDialog.Builder(getOwnerActivity()).create();
+            alertDialog.setTitle("sendDayEndSumData");
+            alertDialog.setMessage("The is error :" + e.getMessage());
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
         }
-        mainloading.setVisibility(GONE);
         return isDone;
     }
 
     private boolean cancelDayEndSumData () {
         boolean isDone = true;
-        mainloading.setVisibility(VISIBLE);
         APIManager manager = new APIManager();
         if (cm.hasInternetConnection() && manager.connectionclass() != null) {
             isDone = manager.unSyncToServer(nowDate);
         }else {
             isDone = false;
         }
-        mainloading.setVisibility(GONE);
         return isDone;
     }
 
@@ -214,6 +224,7 @@ public class ReportingDialog extends Dialog implements View.OnClickListener {
             case R.id.daySumSendBtn:
                 isDaySumSend = sendDayEndSumData();
                 showInfo();
+                infoTxt.setText("締めデータ転送済み");
                 break;
             case R.id.daySumCancelBtn:
                 isDaySumSend = !cancelDayEndSumData();
