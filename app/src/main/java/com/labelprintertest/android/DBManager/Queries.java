@@ -465,7 +465,6 @@ public class Queries {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        System.out.println(list);
         return list;
     }
 

@@ -43,7 +43,6 @@ public class SumByDayActivity extends AppCompatActivity {
     private String titleStr;
     private boolean isLoading = false;
     private boolean datechecking = false;
-    static public boolean checkingpring = false;
 
     @Override
     public void onResume() {
@@ -110,7 +109,6 @@ public class SumByDayActivity extends AppCompatActivity {
                 if (mainList.size() > 0 || subList.size() > 0) {
                     PrinterManager manager = new PrinterManager();
                     checkingPrintState(manager.settlementPrinterStart(titleStr, mainList, subList));
-                    checkingpring = true;
                 }else {
                     finish();
                 }

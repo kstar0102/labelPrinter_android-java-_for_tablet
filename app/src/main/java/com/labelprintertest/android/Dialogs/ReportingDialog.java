@@ -48,12 +48,12 @@ public class ReportingDialog extends Dialog implements View.OnClickListener {
     private boolean isByEndSum = false;
     private boolean isDaySumSend = false;
     boolean ischeckdialog = false;
-    private LinearLayout ReportLayout;
+    static boolean ischecksend = false;
+    static boolean ischeckcancel = false;
 
     public ReportingDialog(@NonNull Context context) {
         super(context);
         setContentView(R.layout.reporting_dialog);
-        ReportLayout = findViewById(R.id.maindialog);
 
 
         if(ischeckdialog == true){
@@ -88,26 +88,31 @@ public class ReportingDialog extends Dialog implements View.OnClickListener {
         userInfo.setText(cm.getUserInfo());
 
         infoTxt.setText(Common.endInfoStr);
-        if(MainActivity.checkingpring == true){
-            infoTxt.setText("締めデータ転送済");
-        }
+
         SimpleDateFormat formatter= new SimpleDateFormat("HH");
         Date date = new Date(System.currentTimeMillis());
         System.out.println(formatter.format(date));
+
+        if(ischecksend == true){
+            ischeckcancel = false;
+            infoTxt.setText("締めデータ転送済み");
+        }
+
+        if(ischeckcancel == true){
+            ischecksend = false;
+            infoTxt.setText("日次締済み締データ取消転送済み!");
+        }
+
         if(Integer.parseInt(formatter.format(date)) > 23){
-            MainActivity.checkingpring = false;
+            isByEndSum = !saveByDayEndData();
+            ischeckcancel = false;
+            ischecksend = false;
             infoTxt.setText("");
         }
     }
 
-    private void checkSettlementState(Calendar calendar) {
-
-    }
-
     /**
-     *
      * 日時を設定するデートピッカーを表示する
-     *
      */
     private void showDatePicker(Calendar calendar) {
         int year = calendar.get(Calendar.YEAR);
@@ -126,6 +131,8 @@ public class ReportingDialog extends Dialog implements View.OnClickListener {
     }
 
     private void showInfo() {
+        ischeckcancel =false;
+        ischecksend = false;
         Date date = nowDate.getTime();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm", Locale.JAPANESE);
         String dateStr = sdf.format(date);
@@ -223,12 +230,14 @@ public class ReportingDialog extends Dialog implements View.OnClickListener {
                 break;
             case R.id.daySumSendBtn:
                 isDaySumSend = sendDayEndSumData();
-                showInfo();
+                ischeckcancel =false;
+                ischecksend = true;
                 infoTxt.setText("締めデータ転送済み");
                 break;
             case R.id.daySumCancelBtn:
                 isDaySumSend = !cancelDayEndSumData();
-                showInfo();
+                ischecksend = false;
+                ischeckcancel =true;
                 infoTxt.setText("日次締済み締データ取消転送済み!");
                 break;
             case R.id.daySumPrintBtn:

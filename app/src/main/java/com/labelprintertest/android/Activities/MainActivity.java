@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int selectedTabIndex = 0;
     private int selectedPayType;
     private boolean isLoading = false;
-    static public boolean checkingpring = false;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -334,8 +333,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         if (price > 0)
-            {checkingpring = true;
-            sumPriceTxt.setText(cm.numberFormat(price));}
+            sumPriceTxt.setText(cm.numberFormat(price));
         else
             sumPriceTxt.setText("");
     }

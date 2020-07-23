@@ -317,7 +317,7 @@ public class LoginActivity extends AppCompatActivity {
         Queries query = new Queries(null, dbHelper);
         LocalStorageManager manager = new LocalStorageManager();
         String hashPass = cm.getHashCodeFromPass(pass);
-        System.out.println(hashPass);
+//        System.out.println(hashPass);
         User user = query.getUserInfo(id, hashPass);
         // test
 //        user = new User();
