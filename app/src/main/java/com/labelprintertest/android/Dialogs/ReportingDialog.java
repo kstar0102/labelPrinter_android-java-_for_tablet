@@ -55,7 +55,6 @@ public class ReportingDialog extends Dialog implements View.OnClickListener {
         super(context);
         setContentView(R.layout.reporting_dialog);
 
-
         if(ischeckdialog == true){
             dismiss();
         }
@@ -93,6 +92,23 @@ public class ReportingDialog extends Dialog implements View.OnClickListener {
         Date date = new Date(System.currentTimeMillis());
         System.out.println(formatter.format(date));
 
+        LocalStorageManager localStorageManager = new LocalStorageManager();
+
+        if(localStorageManager.getSendData() != null){
+            System.out.println(localStorageManager.getSendData());
+            infoTxt.setText("締めデータ転送済み");
+        }
+
+        if(localStorageManager.getCancelData() != null){
+            System.out.println(localStorageManager.getCancelData());
+            infoTxt.setText("日次締済み締データ取消転送済み!");
+        }
+
+        if(localStorageManager.getEndDay() != null){
+            System.out.println(localStorageManager.getEndDay());
+            infoTxt.setText("日次締め済み");
+        }
+
         if(ischecksend == true){
             ischeckcancel = false;
             infoTxt.setText("締めデータ転送済み");
@@ -104,6 +120,9 @@ public class ReportingDialog extends Dialog implements View.OnClickListener {
         }
 
         if(Integer.parseInt(formatter.format(date)) > 23){
+            localStorageManager.saveSendData(false);
+            localStorageManager.saveCancelData(false);
+            localStorageManager.saveEndDay(false);
             isByEndSum = !saveByDayEndData();
             ischeckcancel = false;
             ischecksend = false;
@@ -226,16 +245,28 @@ public class ReportingDialog extends Dialog implements View.OnClickListener {
                 break;
             case R.id.endByDayBtn:
                 isByEndSum = saveByDayEndData();
+                LocalStorageManager localStorageManager = new LocalStorageManager();
+                localStorageManager.saveEndDay(true);
+                localStorageManager.saveSendData(false);
+                localStorageManager.saveCancelData(false);
                 showInfo();
                 break;
             case R.id.daySumSendBtn:
                 isDaySumSend = sendDayEndSumData();
+                LocalStorageManager localStorageManagersend = new LocalStorageManager();
+                localStorageManagersend.saveSendData(true);
+                localStorageManagersend.saveEndDay(false);
+                localStorageManagersend.saveCancelData(false);
                 ischeckcancel =false;
                 ischecksend = true;
                 infoTxt.setText("締めデータ転送済み");
                 break;
             case R.id.daySumCancelBtn:
                 isDaySumSend = !cancelDayEndSumData();
+                LocalStorageManager localStorageManagercancel = new LocalStorageManager();
+                localStorageManagercancel.saveCancelData(true);
+                localStorageManagercancel.saveSendData(false);
+                localStorageManagercancel.saveEndDay(false);
                 ischecksend = false;
                 ischeckcancel =true;
                 infoTxt.setText("日次締済み締データ取消転送済み!");

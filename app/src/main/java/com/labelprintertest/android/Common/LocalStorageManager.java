@@ -93,5 +93,44 @@ public class LocalStorageManager {
         String syncState = sharedPreferences.getString("xml_name", null);
         return syncState;
     }
+
+    public void saveSendData(boolean ischecksend) {
+        SharedPreferences sharedPreferences = Common.myApp.getSharedPreferences(String.valueOf(R.string.app_name), Common.myApp.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("ischeckSend", String.valueOf(ischecksend));
+        editor.commit();
+    }
+
+    public String getSendData() {
+        SharedPreferences sharedPreferences = Common.myApp.getSharedPreferences(String.valueOf(R.string.app_name), Common.myApp.MODE_PRIVATE);
+        String syncState = sharedPreferences.getString("ischeckSend", null);
+        return syncState;
+    }
+
+    public void saveEndDay(boolean ischeckendday) {
+        SharedPreferences sharedPreferences = Common.myApp.getSharedPreferences(String.valueOf(R.string.app_name), Common.myApp.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("ischeckendday", String.valueOf(ischeckendday));
+        editor.commit();
+    }
+
+    public String getEndDay() {
+        SharedPreferences sharedPreferences = Common.myApp.getSharedPreferences(String.valueOf(R.string.app_name), Common.myApp.MODE_PRIVATE);
+        String syncState = sharedPreferences.getString("ischeckendday", null);
+        return syncState;
+    }
+
+    public void saveCancelData(boolean ischeckcancel) {
+        SharedPreferences sharedPreferences = Common.myApp.getSharedPreferences(String.valueOf(R.string.app_name), Common.myApp.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("ischeckCancel", String.valueOf(ischeckcancel));
+        editor.commit();
+    }
+
+    public String getCancelData() {
+        SharedPreferences sharedPreferences = Common.myApp.getSharedPreferences(String.valueOf(R.string.app_name), Common.myApp.MODE_PRIVATE);
+        String syncState = sharedPreferences.getString("ischeckCancel", null);
+        return syncState;
+    }
 }
 

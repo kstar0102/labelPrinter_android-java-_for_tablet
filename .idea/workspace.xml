@@ -22,10 +22,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/Activities/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/Activities/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/Activities/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/Activities/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/Activities/SumByDayActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/Activities/SumByDayActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/DBManager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/DBManager/Queries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/Common/LocalStorageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/Common/LocalStorageManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/Dialogs/ReportingDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/Dialogs/ReportingDialog.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
