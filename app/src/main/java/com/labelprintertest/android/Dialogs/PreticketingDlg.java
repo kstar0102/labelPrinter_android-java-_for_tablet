@@ -10,11 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 
 import com.citizen.sdk.labelprint.LabelPrinter;
+import com.labelprintertest.android.Activities.SumByDayActivity;
 import com.labelprintertest.android.Common.Common;
 import com.labelprintertest.android.Common.DownTimer;
 import com.labelprintertest.android.DBManager.DbHelper;
@@ -41,15 +44,12 @@ import static io.fabric.sdk.android.Fabric.TAG;
 
 public class PreticketingDlg extends Dialog{
     DatePickerDialog picker;
-    EditText eText;
+    TextView eText;
     Button btnGet;
     private Calendar selectDate;
     private ArrayList<TicketModel> selectList;
     private int paymentType = 1;
-    private ArrayList<TicketInfo> ticketingList;
-    private ArrayList<TicketType> tabList;
-    private int selectedPayType;
-    public PreticketingDlg(@NonNull Context context) {
+    public PreticketingDlg(@NonNull Context context, final ArrayList<TicketInfo> infos, final long receiptMoney, final String receiptName, final int payType) {
         super(context);
         setContentView(R.layout.preticketing_dialog);
         eText=findViewById(R.id.preDate);
@@ -70,38 +70,55 @@ public class PreticketingDlg extends Dialog{
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                eText.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                eText.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
+                                selectDate.set(year, monthOfYear, dayOfMonth);
+
+//                                Log.e("date:", String.valueOf(selectDate));
                             }
                         }, year, month, day);
                 picker.show();
             }
         });
+
         btnGet= findViewById(R.id.btn_preticket);
+
         btnGet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(selectDate == null){
-                    Toast.makeText(getContext(), "日付を選択してください。", Toast.LENGTH_LONG).show();
-                    dismiss();
-                    return;
-                }
-                DbHelper dbHelper = new DbHelper(getOwnerActivity());
-                Queries query = new Queries(null, dbHelper);
-                selectList = query.getPreTicketModels(selectDate);
-                if(selectList == null){
-                    Common.cm.showAlertDlg(currentActivity.getResources().getString(R.string.no_xml_title),
-                            currentActivity.getResources().getString(R.string.select_print_msg), new OnClickListener() {
-                                @Override
+                try{
+                    if(selectDate == null){
+                        Toast.makeText(getContext(), "日付を選択してください。", Toast.LENGTH_LONG).show();
+                        dismiss();
+                        return;
+                    }
+                }catch (Exception e){
+                    AlertDialog alertDialog = new AlertDialog.Builder(getOwnerActivity()).create();
+                    alertDialog.setTitle("Alert selectDate");
+                    alertDialog.setMessage("The group by is selectDate:" + e.getMessage());
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-
+                                    dialog.dismiss();
                                 }
-                            }, null);
-                    return;
-                }else {
-                    PrinterManager manager = new PrinterManager();
-                    manager.selectprinterStart(selectList, 0, "", paymentType);
+                            });
+                    alertDialog.show();
                 }
+                try{
+                    PrinterManager manager = new PrinterManager();
+                    manager.preprinterStart(infos, 0, "", payType, selectDate);
 
+                }catch (Exception e){
+                    AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
+                    alertDialog.setTitle("Alert PrinterManager");
+                    alertDialog.setMessage("The group by is PrinterManager:" + e.getMessage());
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.show();
+                }
             }
         });
     }

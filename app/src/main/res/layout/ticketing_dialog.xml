@@ -35,7 +35,7 @@
                     android:id="@+id/mainscroll"
                     android:background="@drawable/border_white"
                     android:layout_width="match_parent"
-                    android:layout_height="850px">
+                    android:layout_height="410dp">
 
                     <LinearLayout
                         android:id="@+id/ticketListLayout"
@@ -59,11 +59,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="@string/btn_presale"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="30dp"
                         android:id="@+id/ticketPrebtn"
                         android:layout_marginRight="500px"
                         android:background="@drawable/normal_button"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
                         android:layout_weight="4"/>
 
                 </LinearLayout>

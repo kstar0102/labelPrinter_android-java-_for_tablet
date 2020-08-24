@@ -16,11 +16,9 @@ import java.util.Calendar;
 public class LocalStorageManager {
 
     /**
-     *
      * LoginStatusを保存する
      *
      * @param info Status
-     *
      */
     public void saveLoginInfo(String info) {
         SharedPreferences sharedPreferences = Common.myApp.getSharedPreferences(String.valueOf(R.string.app_name), Common.myApp.MODE_PRIVATE);
@@ -30,11 +28,9 @@ public class LocalStorageManager {
     }
 
     /**
-     *
      * LoginStatusを返す
      *
      * @return NSString Status
-     *
      */
     public String getLoginStatus() {
         SharedPreferences sharedPreferences = Common.myApp.getSharedPreferences(String.valueOf(R.string.app_name), Common.myApp.MODE_PRIVATE);
@@ -133,4 +129,3 @@ public class LocalStorageManager {
         return syncState;
     }
 }
-

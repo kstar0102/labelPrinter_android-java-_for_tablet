@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,6 +52,7 @@ public class TicketingDlg extends Dialog {
         setContentView(R.layout.ticketing_dialog);
 
         this.models = datas;
+
         this.linstener = linstener;
         this.paymentType = type;
         ticketListView = findViewById(R.id.ticketListLayout);
@@ -172,40 +174,52 @@ public class TicketingDlg extends Dialog {
         if (type == 2) {
             ticketingReceiptBtn.setEnabled(false);
         }else {
-            ticketingReceiptBtn.setOnClickListener(new View.OnClickListener() {
+            ticketingReceiptBtn.setOnClickListener( new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    if (paymentType == 0) {
-                        if (cashRd.isChecked()) {//現金払戻し
-                            linstener.OnRefundTicketingBtnClicked(1);
-                        }else {//売掛払戻し
-                            linstener.OnRefundTicketingBtnClicked(2);
-                        }
-                        DisableButton();
+                    AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+                    alert.setTitle("確認");
+                    alert.setMessage("実行しますよろしいですか");
+                    alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            if (paymentType == 0) {
+                                if (cashRd.isChecked()) {//現金払戻し
+                                    linstener.OnRefundTicketingBtnClicked(1);
+                                }else {//売掛払戻し
+                                    linstener.OnRefundTicketingBtnClicked(2);
+                                }
+                                DisableButton();
 //                        dismiss();
-                    }else {
-                        if (linstener != null) {
-                            PrinterManager manager = new PrinterManager();
-                            LabelPrinter printer = manager.printerStart(models, ticketingMoney, receiptTxt.getText().toString(), paymentType);
+                            }else {
+                                if (linstener != null) {
+                                    PrinterManager manager = new PrinterManager();
+                                    LabelPrinter printer = manager.printerStart(models, ticketingMoney, receiptTxt.getText().toString(), paymentType);
 
-                            //test
+                                    //test
 //                            if(printer != null) {
-                            linstener.OnTicketingReceiptBtnClicked(printer, Integer.valueOf((int) preMoney), receiptTxt.getText().toString());
-                            DisableButton();
+                                    linstener.OnTicketingReceiptBtnClicked(printer, Integer.valueOf((int) preMoney), receiptTxt.getText().toString());
+                                    DisableButton();
 //                            }
+                                }
+                            }
                         }
-                    }
+                    });
+                    alert.setNegativeButton("Cancel",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                }
+                            });
+                    alert.show();
+
                 }
             });
         }
-
 
         ticketingPreBtn = findViewById(R.id.ticketPrebtn);
         ticketingPreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PreticketingDlg preticketingDlg = new PreticketingDlg(getContext());
+                PreticketingDlg preticketingDlg = new PreticketingDlg(getContext(), models, 0, "", paymentType);
                 preticketingDlg.show();
             }
         });

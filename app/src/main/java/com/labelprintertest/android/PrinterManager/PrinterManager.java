@@ -3,6 +3,7 @@ package com.labelprintertest.android.PrinterManager;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.hardware.usb.UsbDevice;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -41,7 +42,7 @@ public class PrinterManager {
         //
         getPermissions(permissions);
     }
-
+//?han ge gat ae.
     public LabelPrinter printerStart(ArrayList<TicketInfo> infos, long receiptMoney, String receiptName, int payType) {
         this.ticketInfos = infos;
         // Constructor
@@ -94,6 +95,56 @@ public class PrinterManager {
                 }
             }
 
+            // Disconnect
+            printer.disconnect();
+        } else {
+            // Connect Error
+            Toast.makeText(currentActivity, "Connect or Printer Error : " + Integer.toString(result), Toast.LENGTH_LONG).show();
+            return null;
+        }
+
+        return printer;
+    }
+
+    public LabelPrinter preprinterStart(ArrayList<TicketInfo> infos, long receiptMoney, String receiptName, int payType, Calendar date) {
+        Log.e("infos", String.valueOf(infos.size()));
+        this.ticketInfos = infos;
+        // Constructor
+        LabelPrinter printer = new LabelPrinter();
+
+        // Set context
+        printer.setContext(currentActivity);
+
+        // Get Address
+        UsbDevice usbDevice = null;                                               // null (Automatic detection)
+
+        // Connect
+        int result = printer.connect(LabelConst.CLS_PORT_USB, usbDevice);       // Android 3.1 ( API Level 12 ) or later
+        if (LabelConst.CLS_SUCCESS == result) {
+            // Set Property (Measurement unit)
+            printer.setMeasurementUnit(LabelConst.CLS_UNIT_MILLI);
+
+            for (int infoNum=0; infoNum<ticketInfos.size(); infoNum++) {
+                TicketInfo info = ticketInfos.get(infoNum);
+                TicketModel model = info.getModel();
+                for (int modelNum=0; modelNum<info.getNum(); modelNum++) {
+                    // Create an instance (LabelDesign Class)
+                    LabelDesign design = new LabelDesign();
+
+                    // Design label
+                    pregetDesignFromTicketInfo(printer, design, model, payType, date);
+                    cm.hasPrintingErr = false;
+
+                    // Set Property (Tear Off)
+                    printer.setMediaHandling(LabelConst.CLS_MEDIAHANDLING_CUT);
+
+                    // Print design
+                    int printResult = printer.print(design, 1);
+                    if (LabelConst.CLS_SUCCESS != printResult) {
+                        cm.hasPrintingErr = true;
+                    }
+                }
+            }
             // Disconnect
             printer.disconnect();
         } else {
@@ -328,6 +379,89 @@ public class PrinterManager {
         }
     }
 
+    private void pregetDesignFromTicketInfo (LabelPrinter printer, LabelDesign design, TicketModel model, int payType, Calendar date) {
+        Log.e("print day", String.valueOf(date.get(Calendar.DATE)));
+        if (cm.printerInfos.size() >0) {
+            for (PrinterInfo info : cm.printerInfos) {
+                if (info.getType().equals("RYOSHUSHO") || info.getIsShown().equals("0") || info.getProfileNo() != model.getProfileNo())
+                    continue;
+                String content = "";
+                Calendar nowDate = Calendar.getInstance();
+
+                String fontName = info.getFont();
+                int fontSize = (int) info.getFontSize();
+                int kanjiSize = LabelConst.CLS_PRT_FNT_KANJI_SIZE_16;
+                if (fontSize <= 16) {
+                    kanjiSize = LabelConst.CLS_PRT_FNT_KANJI_SIZE_16;
+                }else if (fontSize > 16 && fontSize <= 24) {
+                    kanjiSize = LabelConst.CLS_PRT_FNT_KANJI_SIZE_24;
+                }else if (fontSize > 24 && fontSize <= 32) {
+                    kanjiSize = LabelConst.CLS_PRT_FNT_KANJI_SIZE_32;
+                }else if (fontSize > 32 && fontSize <= 48) {
+                    kanjiSize = LabelConst.CLS_PRT_FNT_KANJI_SIZE_48;
+                }
+
+                int style = LabelConst.CLS_FNT_DEFAULT;
+                if (info.getIsBold() > 0) {
+                    if (info.getIsItalic() > 0) {
+                        style = (LabelConst.CLS_FNT_BOLD | LabelConst.CLS_FNT_ITALIC);
+                    }else {
+                        style = LabelConst.CLS_FNT_BOLD;
+                    }
+                }else {
+                    if (info.getIsItalic() > 0) {
+                        style = LabelConst.CLS_FNT_ITALIC;
+                    }
+                }
+
+                int startX = (int) (info.getStartX()); // mm
+                int startY = (int) (info.getEndY()); // mm
+                int endX = (int) (info.getEndX()); // mm
+                int endY = (int) (info.getStartY()); // mm
+
+                if (info.getPrinterType().equals("TEXT")) {
+                    content = prefillterPrintItem(info.getFormat(), model, payType, date);
+                    if (info.getWhiteFlag() == 1) {
+                        if (content.length() > 0) {
+                            design.fillRect(startX, startY, (int) (fontSize * content.length() * 3.78f), endY - startY, LabelConst.CLS_SHADED_PTN_1);
+                        }
+                    }
+                    design.drawTextLocalFont(content, Typeface.create(fontName, Typeface.NORMAL),
+                            LabelConst.CLS_RT_NORMAL, 100, 100, fontSize,
+                            style, startX, startY,
+                            LabelConst.CLS_PRT_RES_203, LabelConst.CLS_UNIT_MILLI);
+
+
+                }else if (info.getPrinterType().equals("IMAGE")) {
+                    if (info.getImgData() != null) {
+                        String fname = info.getFileName();
+                        design.drawBitmap (fname, LabelConst.CLS_RT_NORMAL, endX - startX, endY - startY, startX, startY);
+//                    }else {
+//                        File root = android.os.Environment.getExternalStorageDirectory();
+//                        String fname = root.getAbsolutePath() + "/LabelPrinter/Images/ticket_img.png";
+//                        design.drawBitmap (fname, LabelConst.CLS_RT_NORMAL, endX - startX, endY - startY, startX, startY);
+                    }
+                }else if (info.getPrinterType().equals("BARCODE")) {
+                    content = info.getBarcode();
+                    design.drawBarCode(content, info.getBarcodeType(),
+                            LabelConst.CLS_RT_NORMAL, 5, 2, info.getBarcodeHeight(), startX, startY,
+                            LabelConst.CLS_BCS_TEXT_SHOW);
+                }else if (info.getPrinterType().equals("LINE")) {
+                    design.drawLine (startX, startY, endX, endY, 1);
+                }
+            }
+        }else {
+            Common.cm.showAlertDlg(currentActivity.getResources().getString(R.string.printer_connect_err_title),
+                    currentActivity.getResources().getString(R.string.printer_connect_err_msg), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    }, null);
+            return;
+        }
+    }
+
     private void getDesignFromReceiptInfo (LabelPrinter printer, LabelDesign design, long receiptMoney, String receiptName) {
         if (cm.printerInfos.size() >0) {
             for (PrinterInfo info : cm.printerInfos) {
@@ -506,10 +640,12 @@ public class PrinterManager {
         String fillterStr = item;
         Calendar nowDate = Calendar.getInstance();
         if (fillterStr.contains("{HAKKENBI}")) {
-            fillterStr = fillterStr.replace("{HAKKENBI}", nowDate.get(Calendar.YEAR) + "/" + (nowDate.get(Calendar.MONTH)+1) + "/" + nowDate.get(Calendar.DATE) + "");
+            fillterStr = fillterStr.replace("{HAKKENBI}", nowDate.get(Calendar.YEAR) + "/"
+                    + (nowDate.get(Calendar.MONTH)+1) + "/" + nowDate.get(Calendar.DATE) + "");
         }
         if (fillterStr.contains("(HAKKENBI2}")) {
-            fillterStr = fillterStr.replace("{HAKKENBI2}", nowDate.get(Calendar.YEAR) + " " + (nowDate.get(Calendar.MONTH)+1) + " " + nowDate.get(Calendar.DATE) + "");
+            fillterStr = fillterStr.replace("{HAKKENBI2}", nowDate.get(Calendar.YEAR) + " "
+                    + (nowDate.get(Calendar.MONTH)+1) + " " + nowDate.get(Calendar.DATE) + "");
         }
         if (fillterStr.contains("{HAKKENBI-YEA}")) {
             fillterStr = fillterStr.replace("{HAKKENBI-YEA}", nowDate.get(Calendar.YEAR) + "");
@@ -530,10 +666,12 @@ public class PrinterManager {
         endDate.setTimeInMillis(nowDate.getTimeInMillis() + month);
 
         if (fillterStr.contains("{YUKOKIGEN}")) {
-            fillterStr = fillterStr.replace("{YUKOKIGEN}", endDate.get(Calendar.YEAR) + "/" + (endDate.get(Calendar.MONTH)+1) + "/" + endDate.get(Calendar.DATE) + "");
+            fillterStr = fillterStr.replace("{YUKOKIGEN}", endDate.get(Calendar.YEAR) + "/"
+                    + (endDate.get(Calendar.MONTH)+1) + "/" + endDate.get(Calendar.DATE) + "");
         }
         if (fillterStr.contains("{YUKOKIGEN2}")) {
-            fillterStr = fillterStr.replace("{YUKOKIGEN2}", endDate.get(Calendar.YEAR) + " " + (endDate.get(Calendar.MONTH)+1) + " " + endDate.get(Calendar.DATE) + "");
+            fillterStr = fillterStr.replace("{YUKOKIGEN2}", endDate.get(Calendar.YEAR) + " "
+                    + (endDate.get(Calendar.MONTH)+1) + " " + endDate.get(Calendar.DATE) + "");
         }
         if (fillterStr.contains("{YUKOKIGEN-YEA}")) {
             fillterStr = fillterStr.replace("{YUKOKIGEN-YEA}", endDate.get(Calendar.YEAR) + "");
@@ -548,7 +686,8 @@ public class PrinterManager {
             if (model.getHalfDay() == 1) {
                 SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                 try {
-                    Date limitTime = f.parse(nowDate.get(Calendar.YEAR) + "-" + (nowDate.get(Calendar.MONTH) + 1) + "-" + nowDate.get(Calendar.DATE) + " " + "09:50");
+                    Date limitTime = f.parse(nowDate.get(Calendar.YEAR) + "-"
+                            + (nowDate.get(Calendar.MONTH) + 1) + "-" + nowDate.get(Calendar.DATE) + " " + "09:50");
                     Calendar limitDate = Calendar.getInstance();
                     limitDate.setTime(limitTime);
                     long nowSec = nowDate.getTimeInMillis();
@@ -597,6 +736,115 @@ public class PrinterManager {
             }
         }
 
+        if (payType == 2) {
+            if (fillterStr.contains("{URIKAKEMARK}"))
+                fillterStr = fillterStr.replace("{URIKAKEMARK}", "●");
+        }
+
+        return fillterStr;
+    }
+
+    private String prefillterPrintItem (String item, TicketModel model, int payType, Calendar date) {
+        String fillterStr = item;
+
+//        Calendar nowDate = Calendar.getInstance();
+        if (fillterStr.contains("{HAKKENBI}")) {
+            fillterStr = fillterStr.replace("{HAKKENBI}", date.get(Calendar.YEAR) + "/"
+                    + (date.get(Calendar.MONTH)+1) + "/" + date.get(Calendar.DATE) + "");
+        }
+        if (fillterStr.contains("(HAKKENBI2}")) {
+            fillterStr = fillterStr.replace("{HAKKENBI2}", date.get(Calendar.YEAR) + " "
+                    + (date.get(Calendar.MONTH)+1) + " " + date.get(Calendar.DATE) + "");
+        }
+        if (fillterStr.contains("{HAKKENBI-YEA}")) {
+            fillterStr = fillterStr.replace("{HAKKENBI-YEA}", date.get(Calendar.YEAR) + "");
+        }
+        if (fillterStr.contains("{HAKKENBI-MON}")) {
+            fillterStr = fillterStr.replace("{HAKKENBI-MON}", (date.get(Calendar.MONTH)+1) + "");
+        }
+        if (fillterStr.contains("{HAKKENBI-DAY}")) {
+            fillterStr = fillterStr.replace("{HAKKENBI-DAY}", date.get(Calendar.DATE) + "");
+        }
+
+//        date.setTime(new Date());
+        int end = model.getEndDays();
+        if (end > 0)
+            end = end - 1;
+        long month = 3600 * 24 * end * 1000L;
+        Calendar endDate = Calendar.getInstance();
+        endDate.setTimeInMillis(date.getTimeInMillis() + month);
+
+        if (fillterStr.contains("{YUKOKIGEN}")) {
+            fillterStr = fillterStr.replace("{YUKOKIGEN}", endDate.get(Calendar.YEAR) + "/"
+                    + (endDate.get(Calendar.MONTH)+1) + "/" + endDate.get(Calendar.DATE) + "");
+        }
+        if (fillterStr.contains("{YUKOKIGEN2}")) {
+            fillterStr = fillterStr.replace("{YUKOKIGEN2}", endDate.get(Calendar.YEAR) + " "
+                    + (endDate.get(Calendar.MONTH)+1) + " " + endDate.get(Calendar.DATE) + "");
+        }
+        if (fillterStr.contains("{YUKOKIGEN-YEA}")) {
+            fillterStr = fillterStr.replace("{YUKOKIGEN-YEA}", endDate.get(Calendar.YEAR) + "");
+        }
+        if (fillterStr.contains("{YUKOKIGEN-MON}")) {
+            fillterStr = fillterStr.replace("{YUKOKIGEN-MON}", (endDate.get(Calendar.MONTH)+1) + "");
+        }
+        if (fillterStr.contains("{YUKOKIGEN-DAY}")) {
+            fillterStr = fillterStr.replace("{YUKOKIGEN-DAY}", endDate.get(Calendar.DATE) + "");
+        }
+        if (fillterStr.contains("{YUKOKIGEN-AMPM}")) {
+            if (model.getHalfDay() == 1) {
+                SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                try {
+                    Date limitTime = f.parse(date.get(Calendar.YEAR) + "-"
+                            + (date.get(Calendar.MONTH) + 1) + "-" + date.get(Calendar.DATE) + " " + "09:50");
+                    Calendar limitDate = Calendar.getInstance();
+                    limitDate.setTime(limitTime);
+                    long nowSec = date.getTimeInMillis();
+                    long limitSec = limitDate.getTimeInMillis();
+                    if (nowSec > limitSec) {
+                        fillterStr = fillterStr.replace("{YUKOKIGEN-AMPM}", "午前");
+                    }else {
+                        fillterStr = fillterStr.replace("{YUKOKIGEN-AMPM}", "午後");
+                    }
+                } catch (ParseException e) {
+                    fillterStr = fillterStr.replace("{YUKOKIGEN-AMPM}", "午前");
+                }
+            }else {
+                fillterStr = fillterStr.replace("{YUKOKIGEN-AMPM}", "");
+            }
+        }
+        if (fillterStr.contains("{KENSHUMEI}")) {
+            String ticketName = model.getNamePr();
+            if (ticketName.equals(""))
+                ticketName = model.getName();
+            fillterStr = fillterStr.replace("{KENSHUMEI}", ticketName);
+        }
+        if (fillterStr.contains("{TANKA}")) {
+            fillterStr = fillterStr.replace("{TANKA}", "¥" + cm.numberFormat(model.getPrice()) + "");
+        }
+        if (fillterStr.contains("{NENREISO}")) {
+            fillterStr = fillterStr.replace("{NENREISO}", model.getNameAge());
+        }
+        if (fillterStr.contains("{KAKAKU}")) {
+            fillterStr = fillterStr.replace("{KAKAKU}", "¥" + cm.numberFormat(model.getPrice()) + "");
+        }
+        if (fillterStr.contains("{GENZAINICHIJI}")) {
+            Calendar nowDate = Calendar.getInstance();
+            SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            fillterStr = fillterStr.replace("{GENZAINICHIJI}", f.format(nowDate.getTime()));
+        }
+
+        if (fillterStr.contains("{TANMATSUNO}")) {
+            DbHelper dbHelper = new DbHelper(currentActivity);
+            Queries query = new Queries(null, dbHelper);
+            HashMap initInfo = query.getDeviceInfo();
+
+            if (initInfo == null) {
+                fillterStr = fillterStr.replace("{TANMATSUNO}", "0");
+            }else {
+                fillterStr = fillterStr.replace("{TANMATSUNO}", initInfo.get("tanmatsuno").toString());
+            }
+        }
         if (payType == 2) {
             if (fillterStr.contains("{URIKAKEMARK}"))
                 fillterStr = fillterStr.replace("{URIKAKEMARK}", "●");
