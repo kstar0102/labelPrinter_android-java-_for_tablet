@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ScrollView ticketScrollView;
     private RelativeLayout loadingLayout;
 
-    private ArrayList<TicketInfo> ticketingList;
+    static public ArrayList<TicketInfo> ticketingList;
     private ArrayList<TicketType> tabList;
 
     private int selectedIndex;

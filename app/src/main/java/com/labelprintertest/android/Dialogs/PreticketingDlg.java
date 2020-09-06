@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 
 import com.citizen.sdk.labelprint.LabelPrinter;
+import com.labelprintertest.android.Activities.MainActivity;
 import com.labelprintertest.android.Activities.SumByDayActivity;
 import com.labelprintertest.android.Common.Common;
 import com.labelprintertest.android.Common.DownTimer;
@@ -45,13 +46,14 @@ import static io.fabric.sdk.android.Fabric.TAG;
 public class PreticketingDlg extends Dialog{
     DatePickerDialog picker;
     TextView eText;
-    Button btnGet;
+    Button btnGet, btnclose;
     private Calendar selectDate;
     private ArrayList<TicketModel> selectList;
     private int paymentType = 1;
     public PreticketingDlg(@NonNull Context context, final ArrayList<TicketInfo> infos, final long receiptMoney, final String receiptName, final int payType) {
         super(context);
         setContentView(R.layout.preticketing_dialog);
+        btnclose = findViewById(R.id.btn_close);
         eText=findViewById(R.id.preDate);
         eText.setInputType(InputType.TYPE_NULL);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.JAPANESE);
@@ -82,6 +84,13 @@ public class PreticketingDlg extends Dialog{
 
         btnGet= findViewById(R.id.btn_preticket);
 
+        btnclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
+            }
+        });
+
         btnGet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,7 +115,7 @@ public class PreticketingDlg extends Dialog{
                 try{
                     PrinterManager manager = new PrinterManager();
                     manager.preprinterStart(infos, 0, "", payType, selectDate);
-
+                    MainActivity.ticketingList.clear();
                 }catch (Exception e){
                     AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
                     alertDialog.setTitle("Alert PrinterManager");

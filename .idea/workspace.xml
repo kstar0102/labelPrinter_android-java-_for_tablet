@@ -31,12 +31,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_yesterselga_country_picker_android_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_yesterselga_country_picker_android_1_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__me_zhanghai_android_materialprogressbar_library_1_4_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__me_zhanghai_android_materialprogressbar_library_1_4_2_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/Common/LocalStorageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/Common/LocalStorageManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/Activities/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/Activities/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/Dialogs/PreticketingDlg.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/Dialogs/PreticketingDlg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/Dialogs/TicketingDlg.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/Dialogs/TicketingDlg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/PrinterManager/PrinterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/labelprintertest/android/PrinterManager/PrinterManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/preticketing_dialog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/preticketing_dialog.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ticketing_dialog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ticketing_dialog.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +41,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="2PF4C18B02022895" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_C_API_30" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -93,7 +90,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_C_API_30" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-08-23T05:37:54.433Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-09-06T21:58:55.206Z" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="F:/Source/Android/SDK" />
     <property name="device.picker.selection" value="New_Device_API_27" />
